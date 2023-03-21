@@ -1,27 +1,20 @@
-import React from 'react';
-import './App.scss';
+import React, { FC } from 'react';
+import s from './App.module.scss';
+import { Header } from './components/Header/Header';
+import { HeroSection } from './components/HeroSection/HeroSection';
+import { PageSection } from './components/PageSection/PageSection';
 
-interface Props {
-  onClick: () => void;
-}
-
-export const Provider: React.FC<Props> = React.memo(
-  ({ onClick, children }) => (
-    <button
-      type="button"
-      onClick={onClick}
-    >
-      {children}
-    </button>
-  ),
-);
-
-export const App: React.FC = () => {
+export const App:FC = () => {
   return (
-    <div className="starter">
-      <Provider onClick={() => ({})}>
-        <TodoList />
-      </Provider>
+    <div className={s.app}>
+      <Header />
+      <main className={s.app__mainContent}>
+        <HeroSection />
+        <PageSection title="Working with GET request">
+        </PageSection>
+        <PageSection title="Working with POST request">
+        </PageSection>
+      </main>
     </div>
   );
 };

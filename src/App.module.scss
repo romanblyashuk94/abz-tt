@@ -1,0 +1,14 @@
+@import './assets/style_utils/reset';
+@import './assets/style_utils/mixins';
+
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  font-family: 'Nunito', sans-serif;
+
+  &__mainContent {
+    flex-grow: 1;
+  }
+}
+

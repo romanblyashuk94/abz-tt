@@ -1,0 +1,12 @@
+@import '../../assets/style_utils/extends';
+
+.section {
+  padding-top: 140px;
+
+  &__title {
+    margin-bottom: 50px;
+
+    @extend %H1Text;
+    text-align: center;
+  }
+}

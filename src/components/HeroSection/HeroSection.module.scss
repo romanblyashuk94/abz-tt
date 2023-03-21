@@ -1,0 +1,52 @@
+@import '../../assets/style_utils/variables';
+@import '../../assets/style_utils/extends';
+@import '../../assets/style_utils/mixins';
+
+.hero {
+
+  background-image: url('./heroBackground.jpeg');
+  background-size: cover;
+  background-position: center;
+  max-width: 1170px;
+  margin: 0 auto;
+  min-height: 500px;
+
+  color: $whiteColor;
+
+  @include onTablet {
+    display: flex;
+  }
+
+  @include onDesktop {
+    min-height: 650px;
+  }
+
+
+  &__content {
+    padding: 40px 16px 71px;
+    max-width: 412px;
+    margin: 0 auto;
+    text-align: center;
+
+
+    @include onTablet {
+      margin: auto;
+      padding: 20px 16px
+    }
+  }
+
+  &__title {
+    @extend %H1Text;
+    margin-bottom: 21px;
+  }
+
+  &__text {
+    @extend %BoddyText;
+    margin-bottom: 32px;
+  }
+
+  &__button {
+    width: max-content;
+    margin: 0 auto;
+  }
+}

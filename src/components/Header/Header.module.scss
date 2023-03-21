@@ -1,0 +1,31 @@
+@import '../../assets/style_utils/variables';
+.header {
+  padding: 13px 0;
+
+  background-color: $whiteColor;
+
+  &__content {
+    display: flex;
+    gap: 14px;
+    justify-content: space-between;
+  }
+
+  &__buttonsList {
+    display: flex;
+    gap: 10px;
+  }
+
+  &__buttonsItem {
+    width: 100px;
+  }
+}
+
+.logo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  
+  &__image {
+    display: block;
+  }
+}

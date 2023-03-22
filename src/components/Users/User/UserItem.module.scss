@@ -1,0 +1,58 @@
+@import '../../../assets/style_utils/variables';
+@import '../../../assets/style_utils/extends';
+@import '../../../assets/style_utils/mixins';
+
+.user {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+  padding: 20px;
+  background-color: $whiteColor;
+  border-radius: 10px;
+  width: 328px;
+  
+  @extend %BodyText;
+
+  @include onTablet {
+    width: calc(50% - (16px * 1 / 2));
+  }
+
+  @include onDesktop {
+    width: calc(33.333333% - (29px * 2 / 3));
+  }
+
+  &__image {
+    display: block;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 100%;
+  }
+
+  &__name,
+  &__position,
+  &__mail,
+  &__phone {
+    text-overflow: ellipsis;
+    overflow: hidden; 
+    white-space: nowrap;
+    max-width: 100%;
+  }
+
+  &__mail,
+  &__phone {
+    transition: color $transitionSettings;
+
+    &:hover {
+      color: $secondaryColor;
+    }
+  }
+
+}

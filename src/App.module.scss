@@ -1,5 +1,6 @@
 @import './assets/style_utils/reset';
 @import './assets/style_utils/mixins';
+@import './assets/style_utils/variables';
 
 .app {
   display: flex;
@@ -9,6 +10,7 @@
 
   &__mainContent {
     flex-grow: 1;
+    background-color: $backgroundColor;
   }
 }
 

@@ -1,16 +1,15 @@
 @import '../../assets/style_utils/mixins';
 
 .container {
-  max-width: 360px;
   margin: 0 auto;
   padding: 0 16px;
 
   @include onTablet {
-    max-width: 704px;
+    padding: 0 32px;
   }
 
   @include onDesktop {
-    max-width: 1170px;
+    max-width: 1290px;
     padding: 0 60px;
   }
 }

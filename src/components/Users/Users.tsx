@@ -1,26 +1,48 @@
+/* eslint-disable no-debugger */
 import React, { FC, useEffect, useState } from 'react';
+import CircularProgress from '@mui/material/CircularProgress';
 import { getUsers } from '../../api/api';
 import { User } from '../../types/User';
 import { PrimaryBtn } from '../PrimaryBtn/PrimaryBtn';
 import { UserItem } from './User/UserItem';
 import s from './Users.module.scss';
 
-export const Users:FC = () => {
+interface Props {
+  isFormSubmited: boolean
+}
+
+export const Users:FC<Props> = ({ isFormSubmited }) => {
   const [users, setUsers] = useState<User[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [isLastPage, setIsLastPage] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    getUsers(currentPage).then(res => {
-      setUsers(prevUsers => [...prevUsers, ...res.users]);
+    setIsLoading(true);
 
-      if (res.page === res.total_pages) {
-        setIsLastPage(true);
+    if (isFormSubmited) {
+      setUsers([]);
+      setCurrentPage(1);
+
+      if (currentPage !== 1) {
+        return;
       }
-    });
-  }, [currentPage]);
+    }
 
-  const handlePage = () => {
+    getUsers(currentPage)
+      .then(res => {
+        setUsers(prevUsers => [...prevUsers, ...res.users]);
+
+        if (res.page === res.total_pages) {
+          setIsLastPage(true);
+        }
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
+  }, [currentPage, isFormSubmited]);
+
+  const handlePageChange = () => {
     setCurrentPage((prevPage) => prevPage + 1);
   };
 
@@ -29,9 +51,16 @@ export const Users:FC = () => {
       <ul className={s.users__list}>
         {users.map(user => <UserItem key={user.id} user={user} />)}
       </ul>
+      {isLoading && (
+        <div className={s.users__loader}>
+          <CircularProgress
+            style={{ width: 48, height: 48, color: '#00BDD3' }}
+          />
+        </div>
+      )}
       {!isLastPage && (
         <div className={s.users__loadBtn}>
-          <PrimaryBtn onClick={handlePage}>Show more</PrimaryBtn>
+          <PrimaryBtn onClick={handlePageChange} disabled={isLoading}>Show more</PrimaryBtn>
         </div>
       )}
     </div>

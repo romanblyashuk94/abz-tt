@@ -6,5 +6,5 @@ export interface User {
   position: string,
   position_id: number,
   registration_timestamp: number,
-  photo: string | null,
+  photo: string,
 }

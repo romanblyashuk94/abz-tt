@@ -1,4 +1,5 @@
-import React, { FC } from 'react';
+/* eslint-disable no-debugger */
+import React, { FC, useEffect, useState } from 'react';
 import { User } from '../../../types/User';
 import s from './UserItem.module.scss';
 import photoCover from './photoCover.svg';
@@ -9,14 +10,22 @@ interface Props {
 
 export const UserItem:FC<Props> = ({ user }) => {
   const {
-    id, photo, name, position, email, phone,
+    id, name, position, email, phone,
   } = user;
+
+  const [photo, setPhoto] = useState(user.photo);
+
+  useEffect(() => {
+    fetch(photo).catch(() => {
+      setPhoto(photoCover);
+    });
+  }, []);
 
   return (
     <li key={id} className={s.user}>
       <img
         className={s.user__image}
-        src={photo || photoCover}
+        src={photo}
         alt="User_Photo"
       />
       <h3 className={s.user__name} title={name}>{name}</h3>

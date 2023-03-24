@@ -3,6 +3,8 @@
 @import '../../assets/style_utils/mixins';
 
 .users {
+  text-align: center;
+
   &__list {
     display: flex;
     flex-direction: column;
@@ -23,6 +25,10 @@
     @media (min-width: 1290px) {
       padding: 0 1px;
     }
+  }
+
+  &__loader {
+    margin-top: 20px;
   }
 
   &__loadBtn {

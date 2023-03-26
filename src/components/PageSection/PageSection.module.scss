@@ -1,7 +1,10 @@
 @import '../../assets/style_utils/extends';
 
 .section {
-  padding-top: 140px;
+  
+  &:not(:last-child) {
+    margin-bottom: 140px;
+  }
 
   &__title {
     margin-bottom: 50px;

@@ -1,7 +1,5 @@
-/* eslint-disable no-console */
-/* eslint-disable @typescript-eslint/no-unused-vars */
-/* eslint-disable no-debugger */
-import axios from 'axios';
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import axios, { AxiosError } from 'axios';
 import { Position } from '../types/Position';
 import { User } from '../types/User';
 
@@ -38,8 +36,17 @@ export const getPositions = (): Promise<PosistionResp> => {
 };
 
 export const addUser = async (user: FormData) => {
-  const { data: { token } } = await axios.get('/token');
+  try {
+    const { data: { token } } = await axios.get('/token');
 
-  return axios.post('/users', user, { headers: { Token: token } })
-    .then(res => res.data.user_id);
+    const responce = await axios.post('/users', user, { headers: { Token: token } });
+
+    return responce.data.user_id;
+  } catch (error) {
+    if (error instanceof AxiosError) {
+      return Promise.reject(error.response?.data);
+    }
+
+    return Promise.reject(error);
+  }
 };

@@ -3,7 +3,7 @@ import React, { FC } from 'react';
 import s from './PrimaryBtn.module.scss';
 
 interface Props extends React.ComponentPropsWithoutRef<'button'> {
-  onClick?: () => unknown
+  onClick?: () => void
 }
 
 export const PrimaryBtn: FC<Props> = ({

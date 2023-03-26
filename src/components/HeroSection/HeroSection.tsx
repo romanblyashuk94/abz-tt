@@ -2,8 +2,11 @@ import React, { FC } from 'react';
 import s from './HeroSection.module.scss';
 
 import { PrimaryBtn } from '../PrimaryBtn/PrimaryBtn';
+import { useScroll } from '../../assets/style_utils/hooks/useScroll';
 
 export const HeroSection:FC = () => {
+  const scrollToSection = useScroll();
+
   return (
     <section className={s.hero}>
       <div className={s.hero__content}>
@@ -15,7 +18,7 @@ export const HeroSection:FC = () => {
           to learn,as the world of Front-End Development keeps evolving.
         </p>
         <div className={s.hero__button}>
-          <PrimaryBtn>
+          <PrimaryBtn onClick={() => scrollToSection('form')}>
             Sign Up
           </PrimaryBtn>
         </div>

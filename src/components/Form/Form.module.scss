@@ -7,7 +7,7 @@
   text-align: center;
 
   &__textFieldList {
-    margin-bottom: 29px;
+    margin-bottom: 52px;
   }
 
   &__textFieldItem:not(:last-child) {
@@ -37,6 +37,8 @@
   display: flex;
   align-items: stretch;
   height: 54px;
+  
+  position: relative;
 
   &__input {
     clip: rect(0 0 0 0); 
@@ -61,6 +63,10 @@
     transition: color $transitionSettings,
       border-color $transitionSettings;
 
+    &.error {
+      border-color: #d32f2f;
+    }
+
     &:hover {
       color: $secondaryColor;
       border-color: $secondaryColor;
@@ -74,20 +80,26 @@
     flex-grow: 1;
 
     border: 1px solid $grayColor;
+    border-left: none;
     background-color: transparent;
 
     outline: none;
-  }
-}
-.success {
-  &__title {
-    @extend %H1Text;
-    text-align: center;
-    margin-bottom: 50px;
+
+    &.error {
+      border-color: #d32f2f;
+    }
   }
 
-  &__image {
-    display: block;
-    margin: 0 auto;
+  &__error {
+    position: absolute;
+    bottom: -25px;
+    left: 16px;
+
+    color: #d32f2f;
+    font-size: 12px;
   }
+}
+.successImage {
+  display: block;
+  margin: 0 auto;
 }

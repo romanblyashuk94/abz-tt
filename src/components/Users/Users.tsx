@@ -1,5 +1,5 @@
-/* eslint-disable no-debugger */
 import React, { FC, useEffect, useState } from 'react';
+import { toast } from 'react-toastify';
 import CircularProgress from '@mui/material/CircularProgress';
 import { getUsers } from '../../api/api';
 import { User } from '../../types/User';
@@ -20,15 +20,6 @@ export const Users:FC<Props> = ({ isFormSubmited }) => {
   useEffect(() => {
     setIsLoading(true);
 
-    if (isFormSubmited) {
-      setUsers([]);
-      setCurrentPage(1);
-
-      if (currentPage !== 1) {
-        return;
-      }
-    }
-
     getUsers(currentPage)
       .then(res => {
         setUsers(prevUsers => [...prevUsers, ...res.users]);
@@ -37,10 +28,27 @@ export const Users:FC<Props> = ({ isFormSubmited }) => {
           setIsLastPage(true);
         }
       })
+      .catch(() => toast.error("Can't load users!"))
       .finally(() => {
         setIsLoading(false);
       });
-  }, [currentPage, isFormSubmited]);
+  }, [currentPage]);
+
+  useEffect(() => {
+    if (isFormSubmited && currentPage === 1) {
+      setIsLoading(true);
+
+      getUsers(currentPage)
+        .then(res => setUsers(res.users))
+        .catch(() => toast.error("Can't load users!"))
+        .finally(() => setIsLoading(false));
+    }
+
+    if (isFormSubmited && currentPage !== 1) {
+      setUsers([]);
+      setCurrentPage(1);
+    }
+  }, [isFormSubmited]);
 
   const handlePageChange = () => {
     setCurrentPage((prevPage) => prevPage + 1);

@@ -1,10 +1,13 @@
 import React, { FC } from 'react';
+import { useScroll } from '../../assets/style_utils/hooks/useScroll';
 import { Container } from '../Conatiner/Container';
 import { PrimaryBtn } from '../PrimaryBtn/PrimaryBtn';
 import s from './Header.module.scss';
 import logo from './logo.svg';
 
 export const Header: FC = () => {
+  const scrollToSection = useScroll();
+
   return (
     <header className={s.header}>
       <Container>
@@ -18,10 +21,14 @@ export const Header: FC = () => {
           </a>
           <ul className={s.header__buttonsList}>
             <li className={s.header__buttonsItem}>
-              <PrimaryBtn>Users</PrimaryBtn>
+              <PrimaryBtn onClick={() => scrollToSection('users')}>
+                Users
+              </PrimaryBtn>
             </li>
             <li className={s.header__buttonsItem}>
-              <PrimaryBtn>Sign up</PrimaryBtn>
+              <PrimaryBtn onClick={() => scrollToSection('form')}>
+                Sign up
+              </PrimaryBtn>
             </li>
           </ul>
         </div>

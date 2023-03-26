@@ -21,8 +21,8 @@
   }
 
   &__positionField {
-    text-align: left;
     margin-bottom: 47px;
+    text-align: left;
   }
 
   &__imageField {
@@ -36,18 +36,22 @@
 .uploadField {
   display: flex;
   align-items: stretch;
+
   height: 54px;
   
   position: relative;
 
   &__input {
+    position: absolute;
+
+    width: 1px;
+    height: 1px;
+
     clip: rect(0 0 0 0); 
     clip-path: inset(50%);
-    height: 1px;
     overflow: hidden;
-    position: absolute;
     white-space: nowrap; 
-    width: 1px;
+    
   }
 
   &__btn {
@@ -55,6 +59,7 @@
     align-items: center;
     height: 100%;
     padding: 14px 15px;
+
     border: 1px solid $blackColor;
     border-radius: 4px 0px 0px 4px;
 
@@ -64,7 +69,7 @@
       border-color $transitionSettings;
 
     &.error {
-      border-color: #d32f2f;
+      border-color: $errorColor;
     }
 
     &:hover {
@@ -86,7 +91,7 @@
     outline: none;
 
     &.error {
-      border-color: #d32f2f;
+      border-color: $errorColor;
     }
   }
 
@@ -95,7 +100,7 @@
     bottom: -25px;
     left: 16px;
 
-    color: #d32f2f;
+    color: $errorColor;
     font-size: 12px;
   }
 }

@@ -7,10 +7,11 @@
   flex-direction: column;
   gap: 20px;
   align-items: center;
+  width: 328px;
   padding: 20px;
+
   background-color: $whiteColor;
   border-radius: 10px;
-  width: 328px;
   
   @extend %BodyText;
 
@@ -26,6 +27,7 @@
     display: block;
     width: 70px;
     height: 70px;
+
     border-radius: 50%;
   }
 
@@ -33,6 +35,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    
     max-width: 100%;
   }
 
@@ -40,10 +43,11 @@
   &__position,
   &__mail,
   &__phone {
+    max-width: 100%;
+    
     text-overflow: ellipsis;
     overflow: hidden; 
     white-space: nowrap;
-    max-width: 100%;
   }
 
   &__mail,

@@ -1,5 +1,6 @@
 /* eslint-disable no-debugger */
 import React, { FC, useEffect, useState } from 'react';
+import { Tooltip } from '@mui/material';
 import { User } from '../../../types/User';
 import s from './UserItem.module.scss';
 import photoCover from './photoCover.svg';
@@ -28,24 +29,30 @@ export const UserItem:FC<Props> = ({ user }) => {
         src={photo}
         alt="User_Photo"
       />
-      <h3 className={s.user__name} title={name}>{name}</h3>
+
+      <Tooltip title={name}>
+        <h3 className={s.user__name}>{name}</h3>
+      </Tooltip>
+
       <div className={s.user__info}>
         <p className={s.user__position} title={position}>{position}</p>
-        <a
-          className={s.user__mail}
-          href={`mailto:${email}`}
-          title={email}
-        >
-          {email}
-        </a>
+        <Tooltip title={email}>
+          <a
+            className={s.user__mail}
+            href={`mailto:${email}`}
+          >
+            {email}
+          </a>
+        </Tooltip>
 
-        <a
-          className={s.user__phone}
-          href={`tel:${phone}`}
-          title={phone}
-        >
-          {phone}
-        </a>
+        <Tooltip title={phone}>
+          <a
+            className={s.user__phone}
+            href={`tel:${phone}`}
+          >
+            {phone}
+          </a>
+        </Tooltip>
       </div>
     </li>
   );

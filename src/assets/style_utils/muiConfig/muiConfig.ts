@@ -54,5 +54,29 @@ export const theme = createTheme({
         },
       },
     },
+    MuiTooltip: {
+      styleOverrides: {
+        tooltip: {
+          backgroundColor: 'rgba(0, 0, 0, 0.87)',
+          fontSize: '16px',
+
+          '&.MuiTooltip-tooltip': {
+            '&.MuiTooltip-tooltipPlacementBottom': {
+              marginTop: '2px',
+            },
+            '&.MuiTooltip-tooltipPlacementTop': {
+              marginBottom: '2px',
+            },
+            '&.MuiTooltip-tooltipPlacementLeft': {
+              marginRight: '2px',
+            },
+            '&.MuiTooltip-tooltipPlacementRight': {
+              marginLeft: '2px',
+            },
+          },
+        },
+      },
+    },
+
   },
 });

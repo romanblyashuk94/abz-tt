@@ -19,6 +19,7 @@
 
   @include onTablet {
     width: calc(50% - (16px * 1 / 2));
+    max-width: none;
   }
 
   @include onDesktop {

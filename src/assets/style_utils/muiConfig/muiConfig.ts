@@ -45,6 +45,13 @@ export const theme = createTheme({
         },
       },
     },
+    MuiFormControlLabel: {
+      styleOverrides: {
+        root: {
+          marginLeft: '-5px',
+        },
+      },
+    },
     MuiFormHelperText: {
       styleOverrides: {
         root: {

@@ -1,8 +1,17 @@
 # ABZ.agency Test Task
 
-# [DEMO](https://romanblyashuk94.github.io/abz-tt/)
+# Demo
+Here you can look at the task itself [DEMO LINK](https://romanblyashuk94.github.io/abz-tt/)
 
-## Stack
+## How to run
+
+Clone it with git clone `https://github.com/romanblyashuk94/abz-tt.git`
+
+Install appropriate packages `npm i`
+
+Use `npm start` to run it
+
+## Used technology
 <li>
   <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original-wordmark.svg" align="center" alt="html5" width="40" height="40"/>
   HTML

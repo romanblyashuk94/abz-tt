@@ -23,6 +23,7 @@
 
   @include onDesktop {
     width: calc(33.333333% - (29px * 2 / 3));
+    max-width: none;
   }
 
   &__image {

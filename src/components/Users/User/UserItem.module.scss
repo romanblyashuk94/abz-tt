@@ -7,7 +7,6 @@
   flex-direction: column;
   gap: 20px;
   align-items: center;
-  min-width: max-content;
   width: 100%;
   max-width: 328px;
   padding: 20px;
@@ -24,7 +23,6 @@
 
   @include onDesktop {
     width: calc(33.333333% - (29px * 2 / 3));
-    max-width: none;
   }
 
   &__image {
